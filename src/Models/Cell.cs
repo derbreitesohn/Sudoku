@@ -1,10 +1,17 @@
-using System;
-namespace Cell;
+using DataStructureLibrary.Graph;
+namespace Sudoku.src.Models;
 
-
-public class Cell
+public class Cell : BasicVertexProperty
 {
-    public int Row { get; }
-    public int Col { get; }
+
+    public Cell()
+    {
+        // base logic to fall back to
+    }
+
+    // Sudoku 3x3
+    public int Row { get; set; }
+    public int Col { get; set; }
     public int Val { get; set; }
+    public bool IsFixed { get; set; }
 }
