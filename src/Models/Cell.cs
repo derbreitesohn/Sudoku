@@ -1,17 +1,32 @@
 using DataStructureLibrary.Graph;
-namespace Sudoku.src.Models;
 
-public class Cell : BasicVertexProperty
+namespace Sudoku.Models
 {
-
-    public Cell()
+    public class Cell : BasicVertexProperty
     {
-        // base logic to fall back to
-    }
+        public int Row { get; set; }
+        public int Col { get; set; }
+        public int Value { get; set; }
+        public bool IsFixed { get; set; }
 
-    // Sudoku 3x3
-    public int Row { get; set; }
-    public int Col { get; set; }
-    public int Val { get; set; }
-    public bool IsFixed { get; set; }
+        public Cell()
+        {
+            Value = 0;
+            IsFixed = false;
+        }
+
+        public Cell(int row, int col, int value = 0, bool isFixed = false)
+        {
+            Row = row;
+            Col = col;
+            Value = value;
+            IsFixed = isFixed;
+            Name = $"({row},{col})";
+        }
+
+        public override string ToString()
+        {
+            return $"Cell({Row},{Col}) = {Value} {(IsFixed ? "[Fixed]" : "")}";
+        }
+    }
 }

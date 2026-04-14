@@ -37,7 +37,7 @@ where TEdgeProperty : BasicEdgeProperty<Vertex<TVertexProperty>>, new()
 
         if (v != null)
         {
-            // Da LinkedList kein RemoveAll hat, sammeln wir die Kanten manuell
+            
             var edgesToRemove = new List<Edge<Vertex<TVertexProperty>, TEdgeProperty>>();
 
             foreach (var e in _edges)
@@ -48,13 +48,11 @@ where TEdgeProperty : BasicEdgeProperty<Vertex<TVertexProperty>>, new()
                 }
             }
 
-            // Kanten löschen
             foreach (var e in edgesToRemove)
             {
                 _edges.Remove(e);
             }
-
-            // Knoten löschen
+            
             _vertices.Remove(v);
         }
     }
@@ -114,6 +112,9 @@ where TEdgeProperty : BasicEdgeProperty<Vertex<TVertexProperty>>, new()
         }
         return null;
     }
+
+    public IEnumerable<Vertex<TVertexProperty>> GetVertices() => _vertices;
+    public IEnumerable<Edge<Vertex<TVertexProperty>, TEdgeProperty>> GetEdges() => _edges;
 
     public void PrintGraph()
     {
